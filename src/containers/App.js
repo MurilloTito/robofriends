@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardList from "../components/CardList";
 import SearchBox from '../components/SearchBox';
 import Scroll from "../components/Scroll";
+import ErrorBoundry from "../components/ErrorBoundry";
 // o robots esta exportando um array(varias coisas), entao ele fica apenas export e
 // precisa estar entre chave
 
@@ -39,7 +40,9 @@ class App extends Component { // container: smart component
                     <h1 className="tc f1" id="title">RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}></SearchBox>
                     <Scroll>
-                        <CardList robots={filteredRobots}></CardList>
+                        <ErrorBoundry>
+                            <CardList robots={filteredRobots}></CardList>
+                        </ErrorBoundry>
                     </Scroll>
                 </div>
             );
